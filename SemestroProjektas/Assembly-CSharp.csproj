@@ -63,8 +63,8 @@
      <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
-     <Compile Include="Assets\pickUp.cs" />
-     <Compile Include="Assets\teleportOnCollide.cs" />
+     <Compile Include="Assets\Scripts\pickUp.cs" />
+     <Compile Include="Assets\Scripts\teleportOnCollide.cs" />
      <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/silob/OneDrive/Documents/GitHub/4-the-game-master/SemestroProjektas/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
