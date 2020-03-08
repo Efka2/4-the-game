@@ -18,7 +18,7 @@ public class teleportOnCollide : MonoBehaviour
         //transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         //speed = speed * -1;
         //colorPicker = Random.Range(0, 10);
