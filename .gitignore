@@ -47,5 +47,9 @@ Corridor/Library/metadata/
 # ===================================== #
 # mano sukurta nes zajabasl             #
 # ===================================== #
+SemestroProjektas/Library/ArtifactDB
+SemestroProjektas/Library/ArtifactDB/Library/Artifacts/
+/SemestroProjektas/Library/ArtifactDB
+/SemestroProjektas/Library/ArtifactDB/Library/Artifacts/
 /Library/ArtifactDB
-/Library/Artifacts/
+/Library/ArtifactDB/Library/Artifacts/
