@@ -8,7 +8,6 @@ public class pickUp : MonoBehaviour
     public bool isHighlighted = false;
     public CharacterController c;
     private Color matColor;
-    bool playerIsClose = false;
     //darbas su display'u lapeliu teksto
     //public Text myText;
     //public float fadeTime;
@@ -16,14 +15,10 @@ public class pickUp : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (playerIsClose)
-        {
-            Renderer render = GetComponent<Renderer>();
-            matColor = render.material.color;
-            render.material.color = Color.red;
-            isHighlighted = true;
-        }
-
+        Renderer render = GetComponent<Renderer>();
+        matColor = render.material.color;
+        render.material.color = Color.red;
+        isHighlighted = true;
     
     }
     
@@ -37,29 +32,22 @@ public class pickUp : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        //try
-        //{
-        //    CharacterController cc = other.GetComponent<CharacterController>();
-        //    cc.enabled = false;
-        //    other.transform.position = new Vector3(other.transform.position.x + 30, other.transform.position.y, other.transform.position.z);
-        //    cc.enabled = true;
-        //}
-        //catch (System.Exception)
-        //{
-
-        //}
-        if (other.gameObject.tag == "Player")
+        try
         {
-            playerIsClose = true;
+            CharacterController cc = other.GetComponent<CharacterController>();
+            cc.enabled = false;
+            other.transform.position = new Vector3(other.transform.position.x + 30, other.transform.position.y, other.transform.position.z);
+            cc.enabled = true;
+        }
+        catch (System.Exception)
+        {
+
         }
 
     }
     public void OnTriggerExit()
     {
-        //if (other.GameObject.tag == "Player")
-        //{
-            playerIsClose = false;
-        //}
+
     }
 
     void Update()
