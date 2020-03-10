@@ -8,6 +8,7 @@ public class pickUp : MonoBehaviour
     public bool isHighlighted = false;
     public CharacterController c;
     private Color matColor;
+    public bool inRange = false;
     //darbas su display'u lapeliu teksto
     //public Text myText;
     //public float fadeTime;
@@ -15,10 +16,15 @@ public class pickUp : MonoBehaviour
 
     void OnMouseEnter()
     {
+       
         Renderer render = GetComponent<Renderer>();
         matColor = render.material.color;
-        render.material.color = Color.red;
         isHighlighted = true;
+        if (inRange)
+        {
+            render.material.color = Color.red;   
+        }
+
     
     }
     
@@ -27,37 +33,55 @@ public class pickUp : MonoBehaviour
         Renderer render = GetComponent<Renderer>();
         render.material.color = matColor;
         isHighlighted = false;
-
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        try
-        {
-            CharacterController cc = other.GetComponent<CharacterController>();
-            cc.enabled = false;
-            other.transform.position = new Vector3(other.transform.position.x + 30, other.transform.position.y, other.transform.position.z);
-            cc.enabled = true;
-        }
-        catch (System.Exception)
-        {
+        //try
+        //{
+        //    CharacterController cc = other.GetComponent<CharacterController>();
+        //    cc.enabled = false;
+        //    other.transform.position = new Vector3(other.transform.position.x + 30, other.transform.position.y, other.transform.position.z);
+        //    cc.enabled = true;
+        //}
+        //catch (System.Exception)
+        //{
 
+        //}
+        if(other.gameObject.tag == "Player")
+        {
+            Renderer render = GetComponent<Renderer>();
+            matColor = render.material.color;
+            inRange = true;
+            if (isHighlighted)
+            {
+                //Renderer render = GetComponent<Renderer>();
+                render.material.color = Color.red;
+            }
         }
+
+        
+
 
     }
     public void OnTriggerExit()
     {
-
+        Renderer render = GetComponent<Renderer>();
+        render.material.color = matColor;
+        inRange = false;
+        //Renderer render = GetComponent<Renderer>();
+        //render.material.color = matColor;
+        //isHighlighted = false;
     }
 
     void Update()
     {
         //FadeText();
 
-        if (Input.GetKeyDown("e") && isHighlighted == true)
+        if (Input.GetKeyDown("e") && isHighlighted && inRange)
         {
             Destroy(gameObject); 
-            OnTriggerEnter(c);
+            //OnTriggerEnter(c);
         }
 
     }
