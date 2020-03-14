@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class pickUp2 : MonoBehaviour
 {
     public bool isHighlighted = false;
-    public CharacterController c;
+    public CharacterController character;
     private Color matColor;
     public float pickUpDistance = 3;
     //public bool inRange = false;
@@ -20,12 +20,12 @@ public class pickUp2 : MonoBehaviour
 
         Renderer render = GetComponent<Renderer>();
         matColor = render.material.color;
-        
-        //if (InRange())
-        //{
+
+        if (InRange())
+        {
             isHighlighted = true;
-            //render.material.color = Color.red;
-        //}
+            render.material.color = Color.gray;
+        }
     }
 
     void OnMouseExit()
@@ -55,7 +55,7 @@ public class pickUp2 : MonoBehaviour
         if (Input.GetKeyDown("e") && isHighlighted && InRange())
         {
             Destroy(gameObject);
-            //OnTriggerEnter(c);
+            Teleportation(character);
         }
 
     }
@@ -64,6 +64,21 @@ public class pickUp2 : MonoBehaviour
     {
         //myText = GameObject.Find("Text").GetComponent<Text>();
         //myText.color = Color.clear;
+    }
+
+    void Teleportation(Collider other)
+    {
+        try
+        {
+            CharacterController cc = other.GetComponent<CharacterController>();
+            cc.enabled = false;
+            other.transform.position = new Vector3(other.transform.position.x + 30, other.transform.position.y, other.transform.position.z);
+            cc.enabled = true;
+        }
+        catch (System.Exception)
+        {
+
+        }
     }
 
     //void FadeText()
