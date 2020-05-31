@@ -10,11 +10,6 @@ public class randomSpawn : MonoBehaviour
         sukurtiLapelius();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
 
     public GameObject[] lapeliai = new GameObject[4];
@@ -26,11 +21,11 @@ public class randomSpawn : MonoBehaviour
     public void sukurtiLapelius()
     {
         int k = Random.Range(0, lapeliaiBaznycioj.Length);
-        Destroy(lapeliaiTowery[k]);//.SetActive(true);
-
-        Destroy(lapeliaiBaznycioj[k]);//.SetActive(true);
-
-        Destroy(lapeliaiNamely[k]);//.SetActive(true);
+        Destroy(lapeliaiTowery[k]);
+        k = Random.Range(0, lapeliaiBaznycioj.Length);
+        Destroy(lapeliaiBaznycioj[k]);
+        k = Random.Range(0, lapeliaiBaznycioj.Length);
+        Destroy(lapeliaiNamely[k]);
 
         k = Random.Range(0, lapeliai.Length);
         for (int i = 0; i < 4; i++)
